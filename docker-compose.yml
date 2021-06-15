@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:13.3-alpine
+    environment:
+      POSTGRES_PASSWORD: reinosa6
+      POSTGRES_USER: padeladmin
+      POSTGRES_MULTIPLE_DATABASES: padeldb
+      TZ: "Europe/Madrid"
+      LANG: "es_ES.utf8"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./scripts:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
